@@ -1,11 +1,10 @@
-name: "Detect specific URL in text attachment"
-description: "Flags when an attachment contains a link to something.com"
+name: "Attachment PDF Contains Suspicious URL"
+description: "Detects txt attachments that contain a URL within the file pointing to a specific malicious domain."
 type: "rule"
-severity: "medium"
+severity: "high"
 
 source: |
-  length(
-    filter(attachments,
-      strings.icontains(string(file.explode(.)), "something.com")
-    )
-  ) > 0
+  type.inbound
+  and any(attachments, .file_extension == "txt" and any(file.explode(.), 
+    any(.scan.url.urls, .domain.root_domain == "something.com")
+  ))
