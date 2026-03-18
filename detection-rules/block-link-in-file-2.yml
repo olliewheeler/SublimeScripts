@@ -5,6 +5,6 @@ type: "rule"
 source: |
   any(attachments,
     any(file.explode(.).scan.url.urls,
-      strings.icontains(.url, "https://something.com")
+      strings.icontains(.url, "something.com")
     )
   )
