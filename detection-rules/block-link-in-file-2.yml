@@ -1,10 +1,15 @@
 name: "Detect specific URL in text attachment"
-description: "looks for a specific url in a file"
+description: "Flags when an attachment contains a link to something.com"
 type: "rule"
+severity: "medium"
 
 source: |
-  any(attachments,
-    any(file.explode(.).scan.url.urls,
-      strings.icontains(.url, "something.com")
+  length(
+    filter(attachments,
+      length(
+        filter(file.explode(.).scan.url.urls,
+          strings.icontains(.url, "something.com")
+        )
+      ) > 0
     )
-  )
+  ) > 0
