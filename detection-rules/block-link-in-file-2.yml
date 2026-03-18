@@ -6,10 +6,6 @@ severity: "medium"
 source: |
   length(
     filter(attachments,
-      length(
-        filter(file.explode(.).scan.url.urls,
-          strings.icontains(.url, "something.com")
-        )
-      ) > 0
+      strings.icontains(string(file.explode(.)), "something.com")
     )
   ) > 0
