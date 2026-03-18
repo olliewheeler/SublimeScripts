@@ -1,5 +1,6 @@
 name: "Detect specific URL in text attachment"
-type: "query"
+type: "rule"
+description: "looks for a specific url in a file"
 
 source: |
   any(attachments,
@@ -7,5 +8,3 @@ source: |
       strings.icontains(.url, "https://something.com")
     )
   )
-
-severity: "medium"
