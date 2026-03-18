@@ -1,6 +1,6 @@
 name: "Detect specific URL in text attachment"
-type: "rule"
 description: "looks for a specific url in a file"
+type: "rule"
 
 source: |
   any(attachments,
