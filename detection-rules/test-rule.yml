@@ -1,0 +1,6 @@
+name: "Test Rule - Keyword Trigger"
+description: "Triggers when a specific keyword is found in the email body"
+type: "rule"
+
+source: |
+  any(body.plain.raw, /SUSPICIOUS_TEST_STRING_123/i)
