@@ -1,1 +1,7 @@
-strings.icontains(subject.subject, "urgent task")
+name: "Test Rule 2 - Keyword Trigger"
+description: "Triggers on a request for an urgent task"
+type: "rule"
+
+source: |
+  strings.icontains(subject.subject, "urgent task")
+  or strings.icontains(body.plain.raw, "urgent task")
