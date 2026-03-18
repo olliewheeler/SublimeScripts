@@ -1,6 +1,7 @@
 name: "Test Rule - Keyword Trigger"
-description: "Triggers when a specific keyword is found in the email body"
+description: "Triggers on a known test string"
 type: "rule"
 
 source: |
-  any(body.plain.raw, /SUSPICIOUS_TEST_STRING_123/i)
+  strings.icontains(subject.subject, "SUSPICIOUS_TEST_STRING_123")
+  or strings.icontains(body.plain.raw, "SUSPICIOUS_TEST_STRING_123")
