@@ -1,0 +1,11 @@
+name: "Detect specific URL in text attachment"
+type: "query"
+
+source: |
+  any(attachments,
+    any(file.explode(.).scan.url.urls,
+      strings.icontains(.url, "https://something.com")
+    )
+  )
+
+severity: "medium"
