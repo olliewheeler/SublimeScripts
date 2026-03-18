@@ -1,4 +1,4 @@
-name: "Attachment PDF Contains Suspicious URL"
+name: "Attachment TXT Contains Suspicious URL"
 description: "Detects txt attachments that contain a URL within the file pointing to a specific malicious domain."
 type: "rule"
 severity: "high"
